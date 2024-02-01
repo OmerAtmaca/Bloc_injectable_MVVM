@@ -1,0 +1,204 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'main_tab_bloc.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$MainTabState {
+  int get currentTabPosition => throw _privateConstructorUsedError;
+  bool get isLoggedOut => throw _privateConstructorUsedError;
+  bool get isUpdateSide => throw _privateConstructorUsedError;
+  StateType get stateType => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MainTabStateCopyWith<MainTabState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MainTabStateCopyWith<$Res> {
+  factory $MainTabStateCopyWith(
+          MainTabState value, $Res Function(MainTabState) then) =
+      _$MainTabStateCopyWithImpl<$Res, MainTabState>;
+  @useResult
+  $Res call(
+      {int currentTabPosition,
+      bool isLoggedOut,
+      bool isUpdateSide,
+      StateType stateType});
+}
+
+/// @nodoc
+class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
+    implements $MainTabStateCopyWith<$Res> {
+  _$MainTabStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentTabPosition = null,
+    Object? isLoggedOut = null,
+    Object? isUpdateSide = null,
+    Object? stateType = null,
+  }) {
+    return _then(_value.copyWith(
+      currentTabPosition: null == currentTabPosition
+          ? _value.currentTabPosition
+          : currentTabPosition // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoggedOut: null == isLoggedOut
+          ? _value.isLoggedOut
+          : isLoggedOut // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUpdateSide: null == isUpdateSide
+          ? _value.isUpdateSide
+          : isUpdateSide // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stateType: null == stateType
+          ? _value.stateType
+          : stateType // ignore: cast_nullable_to_non_nullable
+              as StateType,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MainTabStateCopyWith<$Res>
+    implements $MainTabStateCopyWith<$Res> {
+  factory _$$_MainTabStateCopyWith(
+          _$_MainTabState value, $Res Function(_$_MainTabState) then) =
+      __$$_MainTabStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int currentTabPosition,
+      bool isLoggedOut,
+      bool isUpdateSide,
+      StateType stateType});
+}
+
+/// @nodoc
+class __$$_MainTabStateCopyWithImpl<$Res>
+    extends _$MainTabStateCopyWithImpl<$Res, _$_MainTabState>
+    implements _$$_MainTabStateCopyWith<$Res> {
+  __$$_MainTabStateCopyWithImpl(
+      _$_MainTabState _value, $Res Function(_$_MainTabState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentTabPosition = null,
+    Object? isLoggedOut = null,
+    Object? isUpdateSide = null,
+    Object? stateType = null,
+  }) {
+    return _then(_$_MainTabState(
+      currentTabPosition: null == currentTabPosition
+          ? _value.currentTabPosition
+          : currentTabPosition // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoggedOut: null == isLoggedOut
+          ? _value.isLoggedOut
+          : isLoggedOut // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUpdateSide: null == isUpdateSide
+          ? _value.isUpdateSide
+          : isUpdateSide // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stateType: null == stateType
+          ? _value.stateType
+          : stateType // ignore: cast_nullable_to_non_nullable
+              as StateType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MainTabState implements _MainTabState {
+  const _$_MainTabState(
+      {required this.currentTabPosition,
+      this.isLoggedOut = false,
+      this.isUpdateSide = false,
+      this.stateType = StateType.initial});
+
+  @override
+  final int currentTabPosition;
+  @override
+  @JsonKey()
+  final bool isLoggedOut;
+  @override
+  @JsonKey()
+  final bool isUpdateSide;
+  @override
+  @JsonKey()
+  final StateType stateType;
+
+  @override
+  String toString() {
+    return 'MainTabState(currentTabPosition: $currentTabPosition, isLoggedOut: $isLoggedOut, isUpdateSide: $isUpdateSide, stateType: $stateType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MainTabState &&
+            (identical(other.currentTabPosition, currentTabPosition) ||
+                other.currentTabPosition == currentTabPosition) &&
+            (identical(other.isLoggedOut, isLoggedOut) ||
+                other.isLoggedOut == isLoggedOut) &&
+            (identical(other.isUpdateSide, isUpdateSide) ||
+                other.isUpdateSide == isUpdateSide) &&
+            (identical(other.stateType, stateType) ||
+                other.stateType == stateType));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, currentTabPosition, isLoggedOut, isUpdateSide, stateType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MainTabStateCopyWith<_$_MainTabState> get copyWith =>
+      __$$_MainTabStateCopyWithImpl<_$_MainTabState>(this, _$identity);
+}
+
+abstract class _MainTabState implements MainTabState {
+  const factory _MainTabState(
+      {required final int currentTabPosition,
+      final bool isLoggedOut,
+      final bool isUpdateSide,
+      final StateType stateType}) = _$_MainTabState;
+
+  @override
+  int get currentTabPosition;
+  @override
+  bool get isLoggedOut;
+  @override
+  bool get isUpdateSide;
+  @override
+  StateType get stateType;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MainTabStateCopyWith<_$_MainTabState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
