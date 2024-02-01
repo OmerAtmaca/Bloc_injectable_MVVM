@@ -18,7 +18,7 @@ This project is a mobile application developed using Flutter. The application co
 - event_bus: A simple event bus implementation, that allows for global event dispatching.
 ### Installation
 1. Install Flutter SDK: Make sure you have Flutter SDK installed.
-2. Clone the Project: git clone https://github.com/OmerAtmaca/clean_architecture_bloc_injectable.git
+2. Clone the Project: git clone https://github.com/OmerAtmaca/sample_bloc_injectable_autoroute.git
 3. Install Dependencies: Navigate to the project folder and run flutter pub get in the terminal.
 4. Firebase Configuration: Set up your Firebase project and follow the necessary configuration steps. Add the google-services.json file into your project.
 ### How to Use
