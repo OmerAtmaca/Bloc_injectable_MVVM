@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:tofas_spor_okullari/app/routing/app_router.dart';
 import 'package:tofas_spor_okullari/domain/events/update_side_event.dart';
 import 'package:tofas_spor_okullari/presentation/utils/bloc_common.dart';
 
 import '../../app/routing/app_navigator.dart';
-import '../../app/routing/app_router.dart';
 import '../../config/di/di.dart';
 import '../../domain/events/update_home_event.dart';
 import '../common_widgets/custom_bottom_navigation.dart';
@@ -24,7 +24,7 @@ class MainTabPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AutoTabsRouter.pageView(
-        routes: const [ProfilePath(), HomePath()],
+        routes: const [HomePath()],
         physics: const NeverScrollableScrollPhysics(),
         builder: (context, child, _) => BlocProvider(
           create: (context) => bloc,

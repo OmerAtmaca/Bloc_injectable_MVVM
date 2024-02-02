@@ -15,17 +15,16 @@ import '../main_tab/components/form_field.dart';
 import '../utils/bus_helper.dart';
 import 'profile_bloc.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage>
-    with TickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final navigator = inject<AppNavigator>();
-  final data = inject<ProfileBloc>();
+  final data = inject<HomeBloc>();
 
   @override
   void initState() {
@@ -36,15 +35,15 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => inject<ProfileBloc>(),
-      child: BlocConsumer<ProfileBloc, ProfileState>(
+      create: (context) => inject<HomeBloc>(),
+      child: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
           BusHelper.eventBus.on<UpdateHomeEvent>().listen((event) {
-            context.read<ProfileBloc>().getData();
+            context.read<HomeBloc>().getData();
           });
         },
         builder: (context, state) {
-          final bloc = context.read<ProfileBloc>();
+          final bloc = context.read<HomeBloc>();
           return FutureBuilder(
               future: data.getData(),
               builder: (context, snapshot) {
