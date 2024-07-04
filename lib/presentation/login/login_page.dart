@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tofas_spor_okullari/app/routing/app_router.dart';
 
 import '../../app/routing/app_navigator.dart';
+import '../../app/routing/app_router.dart';
 import '../../config/di/di.dart';
 import '../../generated/l10n.dart';
 import '../common_widgets/dismiss_keyboard.dart';

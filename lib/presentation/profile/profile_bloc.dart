@@ -10,19 +10,19 @@ import '../utils/bloc_common.dart';
 part 'profile_bloc.freezed.dart';
 
 @freezed
-class ProfileState with _$ProfileState {
-  const factory ProfileState({
+class HomeState with _$HomeState {
+  const factory HomeState({
     @Default("") String pageError,
     @Default("") String error,
     @Default(StateType.initial) StateType stateType,
     @Default(null) QuerySnapshot<UsersModel?>? dataUser,
     @Default(0) int counted,
-  }) = _ProfileState;
+  }) = _HomeState;
 }
 
-class ProfileBloc extends Cubit<ProfileState> {
+class HomeBloc extends Cubit<HomeState> {
   final FirebaseRepository _firebaseRepository;
-  ProfileBloc(this._firebaseRepository) : super(const ProfileState());
+  HomeBloc(this._firebaseRepository) : super(const HomeState());
 
   // Future<void> getUsers({String? usersId}) async {
   //   emit(state.copyWith(stateType: StateType.loading));

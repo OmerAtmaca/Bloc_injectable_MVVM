@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProfileState {
+mixin _$HomeState {
   String get pageError => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   StateType get stateType => throw _privateConstructorUsedError;
@@ -24,15 +24,14 @@ mixin _$ProfileState {
   int get counted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProfileStateCopyWith<ProfileState> get copyWith =>
+  $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(
-          ProfileState value, $Res Function(ProfileState) then) =
-      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+abstract class $HomeStateCopyWith<$Res> {
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
+      _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
       {String pageError,
@@ -43,9 +42,9 @@ abstract class $ProfileStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
-    implements $ProfileStateCopyWith<$Res> {
-  _$ProfileStateCopyWithImpl(this._value, this._then);
+class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
+    implements $HomeStateCopyWith<$Res> {
+  _$HomeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,11 +86,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileStateCopyWith<$Res>
-    implements $ProfileStateCopyWith<$Res> {
-  factory _$$_ProfileStateCopyWith(
-          _$_ProfileState value, $Res Function(_$_ProfileState) then) =
-      __$$_ProfileStateCopyWithImpl<$Res>;
+abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$$_HomeStateCopyWith(
+          _$_HomeState value, $Res Function(_$_HomeState) then) =
+      __$$_HomeStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,11 +101,11 @@ abstract class _$$_ProfileStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProfileStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_ProfileState>
-    implements _$$_ProfileStateCopyWith<$Res> {
-  __$$_ProfileStateCopyWithImpl(
-      _$_ProfileState _value, $Res Function(_$_ProfileState) _then)
+class __$$_HomeStateCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_HomeState>
+    implements _$$_HomeStateCopyWith<$Res> {
+  __$$_HomeStateCopyWithImpl(
+      _$_HomeState _value, $Res Function(_$_HomeState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +117,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
     Object? dataUser = freezed,
     Object? counted = null,
   }) {
-    return _then(_$_ProfileState(
+    return _then(_$_HomeState(
       pageError: null == pageError
           ? _value.pageError
           : pageError // ignore: cast_nullable_to_non_nullable
@@ -146,8 +144,8 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState(
+class _$_HomeState implements _HomeState {
+  const _$_HomeState(
       {this.pageError = "",
       this.error = "",
       this.stateType = StateType.initial,
@@ -172,14 +170,14 @@ class _$_ProfileState implements _ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(pageError: $pageError, error: $error, stateType: $stateType, dataUser: $dataUser, counted: $counted)';
+    return 'HomeState(pageError: $pageError, error: $error, stateType: $stateType, dataUser: $dataUser, counted: $counted)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileState &&
+            other is _$_HomeState &&
             (identical(other.pageError, pageError) ||
                 other.pageError == pageError) &&
             (identical(other.error, error) || other.error == error) &&
@@ -197,17 +195,17 @@ class _$_ProfileState implements _ProfileState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
-      __$$_ProfileStateCopyWithImpl<_$_ProfileState>(this, _$identity);
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
 }
 
-abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState(
+abstract class _HomeState implements HomeState {
+  const factory _HomeState(
       {final String pageError,
       final String error,
       final StateType stateType,
       final QuerySnapshot<UsersModel?>? dataUser,
-      final int counted}) = _$_ProfileState;
+      final int counted}) = _$_HomeState;
 
   @override
   String get pageError;
@@ -221,6 +219,6 @@ abstract class _ProfileState implements ProfileState {
   int get counted;
   @override
   @JsonKey(ignore: true)
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }

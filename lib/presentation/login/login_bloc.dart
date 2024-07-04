@@ -1,6 +1,6 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../data/models/users_model.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../utils/bloc_common.dart';
@@ -28,9 +28,11 @@ class LoginBloc extends Cubit<LoginState> {
 
   void isSignIn(bool value) => emit(state.copyWith(isSign: value));
 
-  void updatePhoneNumber(String value) => emit(state.copyWith(phoneNumber: value));
+  void updatePhoneNumber(String value) =>
+      emit(state.copyWith(phoneNumber: value));
   void updateEmailNumber(String value) => emit(state.copyWith(email: value));
-  void updatePasswordNumber(String value) => emit(state.copyWith(password: value));
+  void updatePasswordNumber(String value) =>
+      emit(state.copyWith(password: value));
 
   bool isFormValid() => state.isPhoneValid;
 
@@ -38,9 +40,10 @@ class LoginBloc extends Cubit<LoginState> {
 
   Future auth() async {
     try {
-      final response = await _authRepository.signIn(email: state.email, password: state.password);
+      final response = await _authRepository.signIn(
+          email: state.email, password: state.password);
       final idToken = await response?.getIdToken();
-      _authRepository.setAccessToken(idToken??"");
+      _authRepository.setAccessToken(idToken ?? "");
       if (response != null) {
         isSignIn(true);
         emit(state.copyWith(stateType: StateType.success));
