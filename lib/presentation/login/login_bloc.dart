@@ -44,6 +44,7 @@ class LoginBloc extends Cubit<LoginState> {
           email: state.email, password: state.password);
       final idToken = await response?.getIdToken();
       _authRepository.setAccessToken(idToken ?? "");
+      _authRepository.setId(response?.uid.toString() ?? "");
       if (response != null) {
         isSignIn(true);
         emit(state.copyWith(stateType: StateType.success));

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_bloc.dart';
+part of 'home_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -22,6 +22,7 @@ mixin _$HomeState {
   QuerySnapshot<UsersModel?>? get dataUser =>
       throw _privateConstructorUsedError;
   int get counted => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $HomeStateCopyWith<$Res> {
       String error,
       StateType stateType,
       QuerySnapshot<UsersModel?>? dataUser,
-      int counted});
+      int counted,
+      String userId});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? stateType = null,
     Object? dataUser = freezed,
     Object? counted = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       pageError: null == pageError
@@ -81,6 +84,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.counted
           : counted // ignore: cast_nullable_to_non_nullable
               as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -97,7 +104,8 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       String error,
       StateType stateType,
       QuerySnapshot<UsersModel?>? dataUser,
-      int counted});
+      int counted,
+      String userId});
 }
 
 /// @nodoc
@@ -116,6 +124,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
     Object? stateType = null,
     Object? dataUser = freezed,
     Object? counted = null,
+    Object? userId = null,
   }) {
     return _then(_$_HomeState(
       pageError: null == pageError
@@ -138,6 +147,10 @@ class __$$_HomeStateCopyWithImpl<$Res>
           ? _value.counted
           : counted // ignore: cast_nullable_to_non_nullable
               as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$_HomeState implements _HomeState {
       this.error = "",
       this.stateType = StateType.initial,
       this.dataUser = null,
-      this.counted = 0});
+      this.counted = 0,
+      this.userId = ""});
 
   @override
   @JsonKey()
@@ -167,10 +181,13 @@ class _$_HomeState implements _HomeState {
   @override
   @JsonKey()
   final int counted;
+  @override
+  @JsonKey()
+  final String userId;
 
   @override
   String toString() {
-    return 'HomeState(pageError: $pageError, error: $error, stateType: $stateType, dataUser: $dataUser, counted: $counted)';
+    return 'HomeState(pageError: $pageError, error: $error, stateType: $stateType, dataUser: $dataUser, counted: $counted, userId: $userId)';
   }
 
   @override
@@ -185,12 +202,13 @@ class _$_HomeState implements _HomeState {
                 other.stateType == stateType) &&
             (identical(other.dataUser, dataUser) ||
                 other.dataUser == dataUser) &&
-            (identical(other.counted, counted) || other.counted == counted));
+            (identical(other.counted, counted) || other.counted == counted) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, pageError, error, stateType, dataUser, counted);
+  int get hashCode => Object.hash(
+      runtimeType, pageError, error, stateType, dataUser, counted, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -205,7 +223,8 @@ abstract class _HomeState implements HomeState {
       final String error,
       final StateType stateType,
       final QuerySnapshot<UsersModel?>? dataUser,
-      final int counted}) = _$_HomeState;
+      final int counted,
+      final String userId}) = _$_HomeState;
 
   @override
   String get pageError;
@@ -217,6 +236,8 @@ abstract class _HomeState implements HomeState {
   QuerySnapshot<UsersModel?>? get dataUser;
   @override
   int get counted;
+  @override
+  String get userId;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

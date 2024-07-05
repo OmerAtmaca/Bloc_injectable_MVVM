@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tofas_spor_okullari/data/models/users_model.dart';
 
+import '../../data/models/services/user_model_local_storage_service.dart';
+import '../../data/models/users_model.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/firebase_repository.dart';
 import '../utils/bloc_common.dart';
@@ -15,15 +16,18 @@ class MainTabState with _$MainTabState {
     required int currentTabPosition,
     @Default(false) bool isLoggedOut,
     @Default(false) bool isUpdateSide,
+    @Default("") String userId,
     @Default(StateType.initial) StateType stateType,
   }) = _MainTabState;
 }
 
 class MainTabBloc extends Cubit<MainTabState> {
-  MainTabBloc(this._firebaseRepository, this._authRepository)
+  MainTabBloc(
+      this._firebaseRepository, this._authRepository, this._localStorageService)
       : super(const MainTabState(currentTabPosition: 0));
   final FirebaseRepository _firebaseRepository;
   final AuthRepository _authRepository;
+  final UserModelLocalStorageService _localStorageService;
 
   void updateTabPosition(int pos) =>
       emit(state.copyWith(currentTabPosition: pos));
@@ -32,7 +36,8 @@ class MainTabBloc extends Cubit<MainTabState> {
 
   void addData({required UsersModel model}) {
     emit(state.copyWith(stateType: StateType.loading));
-    _firebaseRepository.setUsers("users", model.id ?? "", model);
+    _firebaseRepository.setUsers(
+        "users", "user", _localStorageService.getId(), model.id ?? "", model);
     emit(state.copyWith(stateType: StateType.success));
   }
 
@@ -40,9 +45,11 @@ class MainTabBloc extends Cubit<MainTabState> {
     try {
       _authRepository.logOut();
 
-      emit(state.copyWith(isLoggedOut: true));
+      emit(state.copyWith(currentTabPosition: 0, isLoggedOut: true));
     } on Exception catch (e) {
       debugPrint(e.toString());
     }
   }
+
+  void getData() {}
 }

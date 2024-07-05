@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tofas_spor_okullari/data/models/users_model.dart';
-import 'package:tofas_spor_okullari/data/repositories/firebase_repository.dart';
-import 'package:tofas_spor_okullari/presentation/utils/error_handler.dart';
 
+import '../../data/models/services/user_model_local_storage_service.dart';
+import '../../data/models/users_model.dart';
+import '../../data/repositories/firebase_repository.dart';
 import '../utils/bloc_common.dart';
+import '../utils/error_handler.dart';
 
-part 'profile_bloc.freezed.dart';
+part 'home_bloc.freezed.dart';
 
 @freezed
 class HomeState with _$HomeState {
@@ -17,12 +18,15 @@ class HomeState with _$HomeState {
     @Default(StateType.initial) StateType stateType,
     @Default(null) QuerySnapshot<UsersModel?>? dataUser,
     @Default(0) int counted,
+    @Default("") String userId,
   }) = _HomeState;
 }
 
 class HomeBloc extends Cubit<HomeState> {
   final FirebaseRepository _firebaseRepository;
-  HomeBloc(this._firebaseRepository) : super(const HomeState());
+  final UserModelLocalStorageService _localStorageService;
+  HomeBloc(this._firebaseRepository, this._localStorageService)
+      : super(const HomeState());
 
   // Future<void> getUsers({String? usersId}) async {
   //   emit(state.copyWith(stateType: StateType.loading));
@@ -50,12 +54,18 @@ class HomeBloc extends Cubit<HomeState> {
     emit(state.copyWith(stateType: StateType.loading));
   }
 
-  Future<QuerySnapshot<UsersModel?>> getData() async {
+  void getCurrentUserId() {
+    emit(state.copyWith(userId: _localStorageService.getId().toString()));
+  }
+
+  Future<void> getData() async {
+    stateLoading();
+    QuerySnapshot<UsersModel?> datas;
     try {
-      emit(state.copyWith(stateType: StateType.loading));
-      final datas = await _firebaseRepository.getUsers("users", UsersModel());
-      emit(state.copyWith(stateType: StateType.success, dataUser: datas));
-      return datas;
+      emit(state.copyWith(userId: _localStorageService.getId().toString()));
+      datas = await _firebaseRepository.getUsers(
+          "users", "user", state.userId, UsersModel());
+      emit(state.copyWith(dataUser: datas, stateType: StateType.success));
     } on Exception catch (e) {
       emit(state.copyWith(stateType: StateType.error, error: e.handleError()));
       emit(state.copyWith(error: ""));
@@ -64,18 +74,30 @@ class HomeBloc extends Cubit<HomeState> {
   }
 
   void addData({required UsersModel model}) {
-    _firebaseRepository.setUsers("users", model.id ?? "", model);
+    _firebaseRepository.setUsers(
+        "users", "user", state.userId, model.id ?? "", model);
   }
 
   void updateData(UsersModel model) {
-    _firebaseRepository.setUsers("users", model.id ?? "", model,
+    _firebaseRepository.setUsers(
+        "users", "user", state.userId, model.id ?? "", model,
         isUpdate: true);
   }
 
+  // Future<void> deleteData(String doc) async {
+  //   stateLoading();
+  //   await _firebaseRepository.removeUsers("users", doc);
+  //   stateSuccess();
+  // }
   Future<void> deleteData(String doc) async {
     emit(state.copyWith(stateType: StateType.loading));
-    await _firebaseRepository.removeUsers("users", doc);
-    emit(state.copyWith(stateType: StateType.success));
+
+    emit(state.copyWith(userId: _localStorageService.getId().toString()));
+    try {
+      await _firebaseRepository.removeUsers("users", "user", state.userId, doc);
+    } on Exception catch (e) {
+      emit(state.copyWith(stateType: StateType.error, error: e.handleError()));
+    }
   }
 
   void counter(int value) {

@@ -114,6 +114,8 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
 
   @override
   void initState() {
+    print("form init");
+
     isValid = widget.isValid ?? false;
     name.text = widget.name ?? "";
     surname.text = widget.surname ?? "";
@@ -125,6 +127,13 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
     seans.text = widget.seans ?? "";
     tcNumber.text = widget.tcNumber ?? "";
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    print("form dispose");
+
+    super.dispose();
   }
 
   @override
@@ -141,9 +150,6 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                   controller: name,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      setState(() {
-                        nameHasError = false;
-                      });
                       return "";
                     } else {
                       name.text = value;
@@ -358,6 +364,7 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
                           );
 
                           navigator.popStack(context, result: userModel);
+
                           print("object");
                         } else {
                           ScaffoldMessenger.of(context)

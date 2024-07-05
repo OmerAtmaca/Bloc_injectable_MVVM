@@ -33,8 +33,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      User? user = userCredential.user;
-      return user;
+      return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -56,6 +55,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<bool> setAccessToken(String accessToken) =>
       _localStorageService.setAccessToken(accessToken);
+
+  @override
+  Future<bool> setId(String id) => _localStorageService.setId(id);
 
   @override
   Future<bool> setRefreshToken(String refreshToken) =>

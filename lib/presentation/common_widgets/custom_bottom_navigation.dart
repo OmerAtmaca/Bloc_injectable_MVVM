@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/custom_colors.dart';
 import '../utils/dimens.dart';
 
@@ -31,14 +32,14 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
   void init() {
     screenWidth = MediaQuery.of(context).size.width;
     itemWidth = screenWidth / 2;
-    iconHeight = itemWidth / 6;
+    iconHeight = itemWidth / 10;
   }
 
   @override
   Widget build(BuildContext context) {
     init();
     return Container(
-      padding: EdgeInsets.only(top: 14),
+      padding: const EdgeInsets.only(top: 14),
       height: Dimens.navBarHeight,
       decoration: BoxDecoration(
         boxShadow: [
@@ -62,9 +63,10 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
               isSelected: currentPosition == 0,
             ),
           ),
-          Flexible(
-            child: SizedBox(width: 60,)
-          ),
+          const Flexible(
+              child: SizedBox(
+            width: 60,
+          )),
           Flexible(
             child: BottomNavigationItem(
               itemWidth: itemWidth,
@@ -126,7 +128,9 @@ class BottomNavigationItem extends StatelessWidget {
                             image,
                             height: iconWidth,
                             fit: BoxFit.contain,
-                            color: isSelected ? CustomColors.danube : CustomColors.tarawera,
+                            color: isSelected
+                                ? CustomColors.danube
+                                : CustomColors.tarawera,
                           ),
                           const SizedBox(height: 6),
                           Text(
@@ -134,7 +138,9 @@ class BottomNavigationItem extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              color: isSelected ? CustomColors.danube : CustomColors.tarawera,
+                              color: isSelected
+                                  ? CustomColors.danube
+                                  : CustomColors.tarawera,
                               fontSize: 11,
                               fontWeight: FontWeight.w600,
                             ),

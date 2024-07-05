@@ -16,7 +16,8 @@ class BottomSheetWrapper extends StatelessWidget {
             margin: const EdgeInsets.only(top: 30),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(26)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(26)),
               boxShadow: [
                 BoxShadow(
                   offset: const Offset(0, -10),

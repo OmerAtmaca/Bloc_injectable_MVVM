@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app/routing/app_navigator.dart';
-import '../../app/routing/app_router.dart';
 import '../../config/di/di.dart';
 import '../../generated/l10n.dart';
 import '../common_widgets/dismiss_keyboard.dart';
@@ -29,7 +28,7 @@ class LoginPage extends StatelessWidget {
               navigator.showInfoScaffold(context, () {}, state.error);
             } else if (state.stateType == StateType.success) {
               if (state.isSign) {
-                navigator.pushRoute(MainTabPageRoute());
+                navigator.pushNamed(AppNavigator.mainTabPath);
                 context.read<LoginBloc>().resetToken();
               }
             }
@@ -66,13 +65,13 @@ class LoginPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 20),
                             EmailFormField(
-                              text: "omer.atmaca@naylalabs.com",
+                              text: "",
                               isValid: (value) => bloc.isPhoneValid(value),
                               onChanged: (value) =>
                                   bloc.updateEmailNumber(value),
                             ),
                             PasswordFormField(
-                              text: "010200",
+                              text: "",
                               isValid: (value) => bloc.isPhoneValid(value),
                               onChanged: (value) =>
                                   bloc.updatePasswordNumber(value),

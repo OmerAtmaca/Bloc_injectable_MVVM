@@ -36,6 +36,7 @@ class CardUsersWidget extends StatelessWidget {
               child: Stack(
                 children: [
                   CircleAvatar(
+                    backgroundColor: CustomColors.danube,
                     child: Text((itemCount + 1).toString()),
                   ),
                   Center(

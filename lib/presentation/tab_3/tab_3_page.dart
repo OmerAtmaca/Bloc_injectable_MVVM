@@ -14,6 +14,19 @@ class TabUcPage extends StatefulWidget {
 
 class _TabUcPageState extends State<TabUcPage> {
   final navigator = inject<AppNavigator>();
+  @override
+  void initState() {
+    print("tab3 init");
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    print("tab3 dispose");
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

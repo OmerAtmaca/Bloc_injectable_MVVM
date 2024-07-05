@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tofas_spor_okullari/config/di/di.dart';
-import 'package:tofas_spor_okullari/presentation/ext_utils.dart';
-import 'package:tofas_spor_okullari/presentation/utils/bottom_sheet_helper.dart';
 
 import '../../app/routing/app_navigator.dart';
+import '../../config/di/di.dart';
+import '../ext_utils.dart';
+import '../utils/bottom_sheet_helper.dart';
 import '../utils/custom_colors.dart';
 import 'splash_bloc.dart';
 

@@ -4,4 +4,5 @@ class SharedPreferencesKeys {
   static const refreshToken = "refreshToken";
   static const isOnBoarded = "isOnboarded";
   static const fcmToken = "fcmToken";
+  static const id = "id";
 }

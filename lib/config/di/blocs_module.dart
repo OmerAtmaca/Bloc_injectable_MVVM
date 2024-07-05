@@ -2,16 +2,16 @@ import 'package:injectable/injectable.dart';
 import 'package:tofas_spor_okullari/presentation/onboarding/onboarding_bloc.dart';
 import 'package:tofas_spor_okullari/presentation/splash/splash_bloc.dart';
 
+import '../../presentation/home/home_bloc.dart';
 import '../../presentation/login/login_bloc.dart';
 import '../../presentation/main_tab/main_tab_bloc.dart';
-import '../../presentation/profile/profile_bloc.dart';
 import '../../presentation/tab_3/tab_3_bloc.dart';
 import '../../presentation/tab_4/tab_4_bloc.dart';
 
 @module
 abstract class BlocModule {
   @injectable
-  HomeBloc get profileBloc;
+  HomeBloc get homeBloc;
 
   @injectable
   LoginBloc get loginBloc;

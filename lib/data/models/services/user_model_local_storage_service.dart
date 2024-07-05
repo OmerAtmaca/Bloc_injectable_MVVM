@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-import 'package:tofas_spor_okullari/data/models/services/key_value_store.dart';
-import 'package:tofas_spor_okullari/data/models/services/shared_preferences_keys.dart';
-
 import '../users_model.dart';
+import 'key_value_store.dart';
+import 'shared_preferences_keys.dart';
 
 class UserModelLocalStorageService {
   final KeyValueStore _keyValueStore;
@@ -20,6 +19,11 @@ class UserModelLocalStorageService {
 
   Future<bool> setUserModel(UsersModel value) => _keyValueStore.setString(
       SharedPreferencesKeys.userModel, json.encode(value.toJson()));
+
+  Future<bool> setId(String id) =>
+      _keyValueStore.setString(SharedPreferencesKeys.id, id);
+
+  String getId() => _keyValueStore.getString(SharedPreferencesKeys.id) ?? "";
 
   String getAccessToken() =>
       _keyValueStore.getString(SharedPreferencesKeys.accessToken) ?? "";

@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tofas_spor_okullari/data/repositories/firebase_repository.dart';
-import 'package:tofas_spor_okullari/presentation/utils/error_handler.dart';
 
 import '../../data/models/users_model.dart';
+import '../../data/repositories/firebase_repository.dart';
 import '../utils/bloc_common.dart';
+import '../utils/error_handler.dart';
 
 part 'tab_3_bloc.freezed.dart';
 
@@ -22,7 +22,7 @@ class TabUcState with _$TabUcState {
 
 class TabUcBloc extends Cubit<TabUcState> {
   final FirebaseRepository _firebaseRepository;
-  TabUcBloc(this._firebaseRepository) : super(TabUcState());
+  TabUcBloc(this._firebaseRepository) : super(const TabUcState());
 
   // Future<void> getUsers({String? usersId}) async {
   //   emit(state.copyWith(stateType: StateType.loading));
@@ -42,14 +42,15 @@ class TabUcBloc extends Cubit<TabUcState> {
   //   }
   // }
 
-  void stateSuccess(){
+  void stateSuccess() {
     emit(state.copyWith(stateType: StateType.success));
   }
 
   Future<QuerySnapshot<UsersModel?>> getData() async {
     emit(state.copyWith(stateType: StateType.loading));
     try {
-      final data = await _firebaseRepository.getUsers("users",UsersModel());
+      final data =
+          await _firebaseRepository.getUsers("users", "user", "", UsersModel());
       emit(state.copyWith(stateType: StateType.success));
       return data;
     } on Exception catch (e) {
@@ -58,7 +59,8 @@ class TabUcBloc extends Cubit<TabUcState> {
       throw e.toString();
     }
   }
-  getDeneme<UsersModel>(String deneme){
+
+  getDeneme<UsersModel>(String deneme) {
     deneme;
   }
 

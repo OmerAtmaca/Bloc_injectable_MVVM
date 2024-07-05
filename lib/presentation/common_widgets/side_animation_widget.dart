@@ -1,8 +1,9 @@
 import 'dart:math' show pi;
 
 import 'package:flutter/material.dart';
-import 'package:tofas_spor_okullari/domain/events/update_side_event.dart';
-import 'package:tofas_spor_okullari/presentation/utils/bus_helper.dart';
+
+import '../../domain/events/update_side_event.dart';
+import '../utils/bus_helper.dart';
 
 class SideBarWidget extends StatefulWidget {
   final Widget child;

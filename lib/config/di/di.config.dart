@@ -10,15 +10,15 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cloud_firestore/cloud_firestore.dart' as _i6;
-import 'package:dio/dio.dart' as _i19;
+import 'package:dio/dio.dart' as _i18;
 import 'package:firebase_auth/firebase_auth.dart' as _i5;
 import 'package:firebase_messaging/firebase_messaging.dart' as _i7;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart'
     as _i9;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:shared_preferences/shared_preferences.dart' as _i11;
-import 'package:tofas_spor_okullari/app/routing/app_navigator.dart' as _i14;
+import 'package:shared_preferences/shared_preferences.dart' as _i10;
+import 'package:tofas_spor_okullari/app/routing/app_navigator.dart' as _i13;
 import 'package:tofas_spor_okullari/app/routing/app_navigator_auto_route.dart'
     as _i31;
 import 'package:tofas_spor_okullari/app/routing/app_router.dart' as _i3;
@@ -29,33 +29,32 @@ import 'package:tofas_spor_okullari/config/di/networking_service.dart' as _i28;
 import 'package:tofas_spor_okullari/config/di/repository_module.dart' as _i32;
 import 'package:tofas_spor_okullari/config/di/service_module.dart' as _i26;
 import 'package:tofas_spor_okullari/data/models/services/key_value_store.dart'
-    as _i16;
+    as _i15;
 import 'package:tofas_spor_okullari/data/models/services/notification_service.dart'
     as _i22;
 import 'package:tofas_spor_okullari/data/models/services/user_model_local_storage_service.dart'
-    as _i17;
+    as _i16;
 import 'package:tofas_spor_okullari/data/models/utils/device_info.dart' as _i4;
 import 'package:tofas_spor_okullari/data/repositories/auth_repository.dart'
-    as _i18;
+    as _i17;
 import 'package:tofas_spor_okullari/data/repositories/firebase_repository.dart'
     as _i8;
 import 'package:tofas_spor_okullari/domain/repositories/auth_repository_impl.dart'
     as _i33;
 import 'package:tofas_spor_okullari/domain/repositories/firebase_repository_Impl.dart'
     as _i34;
+import 'package:tofas_spor_okullari/presentation/home/home_bloc.dart' as _i19;
 import 'package:tofas_spor_okullari/presentation/login/login_bloc.dart' as _i20;
 import 'package:tofas_spor_okullari/presentation/main_tab/main_tab_bloc.dart'
     as _i21;
 import 'package:tofas_spor_okullari/presentation/onboarding/onboarding_bloc.dart'
     as _i23;
-import 'package:tofas_spor_okullari/presentation/profile/profile_bloc.dart'
-    as _i10;
 import 'package:tofas_spor_okullari/presentation/splash/splash_bloc.dart'
     as _i24;
-import 'package:tofas_spor_okullari/presentation/tab_3/tab_3_bloc.dart' as _i13;
-import 'package:tofas_spor_okullari/presentation/tab_4/tab_4_bloc.dart' as _i12;
+import 'package:tofas_spor_okullari/presentation/tab_3/tab_3_bloc.dart' as _i12;
+import 'package:tofas_spor_okullari/presentation/tab_4/tab_4_bloc.dart' as _i11;
 import 'package:tofas_spor_okullari/presentation/utils/bottom_sheet_helper.dart'
-    as _i15;
+    as _i14;
 import 'package:tofas_spor_okullari/service/shared_preferences_key_value_store.dart'
     as _i30;
 
@@ -88,25 +87,25 @@ extension GetItInjectableX on _i1.GetIt {
         () => repositoryModule.firebaseRepository);
     gh.singleton<_i9.FlutterLocalNotificationsPlugin>(
         serviceModule.getFlutterLocalNotificationPlugin());
-    gh.factory<_i10.HomeBloc>(() => blocModule.profileBloc);
-    await gh.factoryAsync<_i11.SharedPreferences>(
+    await gh.factoryAsync<_i10.SharedPreferences>(
       () => mainModule.getSharedPreferences(),
       preResolve: true,
     );
-    gh.factory<_i12.TabDortBloc>(() => blocModule.tabDortBloc);
-    gh.factory<_i13.TabUcBloc>(() => blocModule.tabUcBloc);
-    gh.singleton<_i14.AppNavigator>(mainModule.navigator);
-    gh.singleton<_i15.BottomSheetHelper>(serviceModule.bottomSheetHelper);
-    gh.factory<_i16.KeyValueStore>(
+    gh.factory<_i11.TabDortBloc>(() => blocModule.tabDortBloc);
+    gh.factory<_i12.TabUcBloc>(() => blocModule.tabUcBloc);
+    gh.singleton<_i13.AppNavigator>(mainModule.navigator);
+    gh.singleton<_i14.BottomSheetHelper>(serviceModule.bottomSheetHelper);
+    gh.factory<_i15.KeyValueStore>(
         () => mainModule.sharedPreferencesKeyValueStore);
-    gh.singleton<_i17.UserModelLocalStorageService>(
+    gh.singleton<_i16.UserModelLocalStorageService>(
         serviceModule.localStorageService);
-    gh.lazySingleton<_i18.AuthRepository>(
+    gh.lazySingleton<_i17.AuthRepository>(
         () => repositoryModule.authRepository);
-    gh.lazySingleton<_i19.Dio>(() => networkingModule.getDio(
-          gh<_i17.UserModelLocalStorageService>(),
+    gh.lazySingleton<_i18.Dio>(() => networkingModule.getDio(
+          gh<_i16.UserModelLocalStorageService>(),
           gh<_i4.DeviceInfo>(),
         ));
+    gh.factory<_i19.HomeBloc>(() => blocModule.homeBloc);
     gh.factory<_i20.LoginBloc>(() => blocModule.loginBloc);
     gh.factory<_i21.MainTabBloc>(() => blocModule.mainTabBloc);
     gh.singleton<_i22.NotificationService>(serviceModule.notificationService);
@@ -122,29 +121,32 @@ class _$BlocModule extends _i25.BlocModule {
   final _i1.GetIt _getIt;
 
   @override
-  _i10.HomeBloc get profileBloc =>
-      _i10.HomeBloc(_getIt<_i8.FirebaseRepository>());
+  _i19.HomeBloc get homeBloc => _i19.HomeBloc(
+        _getIt<_i8.FirebaseRepository>(),
+        _getIt<_i16.UserModelLocalStorageService>(),
+      );
   @override
-  _i20.LoginBloc get loginBloc => _i20.LoginBloc(_getIt<_i18.AuthRepository>());
+  _i20.LoginBloc get loginBloc => _i20.LoginBloc(_getIt<_i17.AuthRepository>());
   @override
   _i21.MainTabBloc get mainTabBloc => _i21.MainTabBloc(
         _getIt<_i8.FirebaseRepository>(),
-        _getIt<_i18.AuthRepository>(),
+        _getIt<_i17.AuthRepository>(),
+        _getIt<_i16.UserModelLocalStorageService>(),
       );
   @override
   _i24.SplashBloc get splashBloc => _i24.SplashBloc(
-        _getIt<_i18.AuthRepository>(),
+        _getIt<_i17.AuthRepository>(),
         _getIt<_i8.FirebaseRepository>(),
       );
   @override
   _i23.OnBoardingBloc get onBoardingBloc =>
-      _i23.OnBoardingBloc(_getIt<_i17.UserModelLocalStorageService>());
+      _i23.OnBoardingBloc(_getIt<_i16.UserModelLocalStorageService>());
   @override
-  _i13.TabUcBloc get tabUcBloc =>
-      _i13.TabUcBloc(_getIt<_i8.FirebaseRepository>());
+  _i12.TabUcBloc get tabUcBloc =>
+      _i12.TabUcBloc(_getIt<_i8.FirebaseRepository>());
   @override
-  _i12.TabDortBloc get tabDortBloc =>
-      _i12.TabDortBloc(_getIt<_i8.FirebaseRepository>());
+  _i11.TabDortBloc get tabDortBloc =>
+      _i11.TabDortBloc(_getIt<_i8.FirebaseRepository>());
 }
 
 class _$ServiceModule extends _i26.ServiceModule {
@@ -153,16 +155,16 @@ class _$ServiceModule extends _i26.ServiceModule {
   final _i1.GetIt _getIt;
 
   @override
-  _i17.UserModelLocalStorageService get localStorageService =>
-      _i17.UserModelLocalStorageService(_getIt<_i16.KeyValueStore>());
+  _i16.UserModelLocalStorageService get localStorageService =>
+      _i16.UserModelLocalStorageService(_getIt<_i15.KeyValueStore>());
   @override
-  _i15.BottomSheetHelper get bottomSheetHelper =>
-      _i15.BottomSheetHelper(_getIt<_i14.AppNavigator>());
+  _i14.BottomSheetHelper get bottomSheetHelper =>
+      _i14.BottomSheetHelper(_getIt<_i13.AppNavigator>());
   @override
   _i22.NotificationService get notificationService => _i22.NotificationService(
         _getIt<_i7.FirebaseMessaging>(),
         _getIt<_i9.FlutterLocalNotificationsPlugin>(),
-        _getIt<_i18.AuthRepository>(),
+        _getIt<_i17.AuthRepository>(),
       );
 }
 
@@ -177,7 +179,7 @@ class _$MainModule extends _i29.MainModule {
 
   @override
   _i30.SharedPreferencesKeyValueStore get sharedPreferencesKeyValueStore =>
-      _i30.SharedPreferencesKeyValueStore(_getIt<_i11.SharedPreferences>());
+      _i30.SharedPreferencesKeyValueStore(_getIt<_i10.SharedPreferences>());
   @override
   _i31.AutoRouteNavigator get navigator =>
       _i31.AutoRouteNavigator(_getIt<_i3.AppRouter>());
@@ -192,7 +194,7 @@ class _$RepositoryModule extends _i32.RepositoryModule {
   _i33.AuthRepositoryImpl get authRepository => _i33.AuthRepositoryImpl(
         _getIt<_i6.FirebaseFirestore>(),
         _getIt<_i5.FirebaseAuth>(),
-        _getIt<_i17.UserModelLocalStorageService>(),
+        _getIt<_i16.UserModelLocalStorageService>(),
       );
   @override
   _i34.FirebaseRepositoryImpl get firebaseRepository =>

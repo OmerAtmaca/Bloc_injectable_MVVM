@@ -25,18 +25,20 @@ class _$AppRouter extends RootStackRouter {
         child: MainTabPage(key: args.key),
       );
     },
+    LoginPath.name: (routeData) {
+      final args =
+          routeData.argsAs<LoginPathArgs>(orElse: () => const LoginPathArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: LoginPage(key: args.key),
+      );
+    },
     OnboardingPath.name: (routeData) {
       final args = routeData.argsAs<OnboardingPathArgs>(
           orElse: () => const OnboardingPathArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: OnBoardingPage(key: args.key),
-      );
-    },
-    LoginPath.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const HomePage(),
       );
     },
     SplashPageRoute.name: (routeData) {
@@ -51,6 +53,12 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const HomePage(),
+      );
+    },
+    TabUcPath.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const TabUcPage(),
       );
     },
   };
@@ -71,16 +79,21 @@ class _$AppRouter extends RootStackRouter {
               HomePath.name,
               path: 'homePath',
               parent: MainTabPageRoute.name,
-            )
+            ),
+            RouteConfig(
+              TabUcPath.name,
+              path: 'tabUcPath',
+              parent: MainTabPageRoute.name,
+            ),
           ],
-        ),
-        RouteConfig(
-          OnboardingPath.name,
-          path: 'onboardingPath',
         ),
         RouteConfig(
           LoginPath.name,
           path: 'loginPath',
+        ),
+        RouteConfig(
+          OnboardingPath.name,
+          path: 'onboardingPath',
         ),
         RouteConfig(
           SplashPageRoute.name,
@@ -117,6 +130,30 @@ class MainTabPageRouteArgs {
 }
 
 /// generated route for
+/// [LoginPage]
+class LoginPath extends PageRouteInfo<LoginPathArgs> {
+  LoginPath({Key? key})
+      : super(
+          LoginPath.name,
+          path: 'loginPath',
+          args: LoginPathArgs(key: key),
+        );
+
+  static const String name = 'LoginPath';
+}
+
+class LoginPathArgs {
+  const LoginPathArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LoginPathArgs{key: $key}';
+  }
+}
+
+/// generated route for
 /// [OnBoardingPage]
 class OnboardingPath extends PageRouteInfo<OnboardingPathArgs> {
   OnboardingPath({Key? key})
@@ -138,18 +175,6 @@ class OnboardingPathArgs {
   String toString() {
     return 'OnboardingPathArgs{key: $key}';
   }
-}
-
-/// generated route for
-/// [HomePage]
-class LoginPath extends PageRouteInfo<void> {
-  const LoginPath()
-      : super(
-          LoginPath.name,
-          path: 'loginPath',
-        );
-
-  static const String name = 'LoginPath';
 }
 
 /// generated route for
@@ -186,4 +211,16 @@ class HomePath extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomePath';
+}
+
+/// generated route for
+/// [TabUcPage]
+class TabUcPath extends PageRouteInfo<void> {
+  const TabUcPath()
+      : super(
+          TabUcPath.name,
+          path: 'tabUcPath',
+        );
+
+  static const String name = 'TabUcPath';
 }

@@ -19,6 +19,7 @@ mixin _$MainTabState {
   int get currentTabPosition => throw _privateConstructorUsedError;
   bool get isLoggedOut => throw _privateConstructorUsedError;
   bool get isUpdateSide => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   StateType get stateType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,6 +37,7 @@ abstract class $MainTabStateCopyWith<$Res> {
       {int currentTabPosition,
       bool isLoggedOut,
       bool isUpdateSide,
+      String userId,
       StateType stateType});
 }
 
@@ -55,6 +57,7 @@ class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
     Object? currentTabPosition = null,
     Object? isLoggedOut = null,
     Object? isUpdateSide = null,
+    Object? userId = null,
     Object? stateType = null,
   }) {
     return _then(_value.copyWith(
@@ -70,6 +73,10 @@ class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
           ? _value.isUpdateSide
           : isUpdateSide // ignore: cast_nullable_to_non_nullable
               as bool,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       stateType: null == stateType
           ? _value.stateType
           : stateType // ignore: cast_nullable_to_non_nullable
@@ -90,6 +97,7 @@ abstract class _$$_MainTabStateCopyWith<$Res>
       {int currentTabPosition,
       bool isLoggedOut,
       bool isUpdateSide,
+      String userId,
       StateType stateType});
 }
 
@@ -107,6 +115,7 @@ class __$$_MainTabStateCopyWithImpl<$Res>
     Object? currentTabPosition = null,
     Object? isLoggedOut = null,
     Object? isUpdateSide = null,
+    Object? userId = null,
     Object? stateType = null,
   }) {
     return _then(_$_MainTabState(
@@ -122,6 +131,10 @@ class __$$_MainTabStateCopyWithImpl<$Res>
           ? _value.isUpdateSide
           : isUpdateSide // ignore: cast_nullable_to_non_nullable
               as bool,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       stateType: null == stateType
           ? _value.stateType
           : stateType // ignore: cast_nullable_to_non_nullable
@@ -137,6 +150,7 @@ class _$_MainTabState implements _MainTabState {
       {required this.currentTabPosition,
       this.isLoggedOut = false,
       this.isUpdateSide = false,
+      this.userId = "",
       this.stateType = StateType.initial});
 
   @override
@@ -149,11 +163,14 @@ class _$_MainTabState implements _MainTabState {
   final bool isUpdateSide;
   @override
   @JsonKey()
+  final String userId;
+  @override
+  @JsonKey()
   final StateType stateType;
 
   @override
   String toString() {
-    return 'MainTabState(currentTabPosition: $currentTabPosition, isLoggedOut: $isLoggedOut, isUpdateSide: $isUpdateSide, stateType: $stateType)';
+    return 'MainTabState(currentTabPosition: $currentTabPosition, isLoggedOut: $isLoggedOut, isUpdateSide: $isUpdateSide, userId: $userId, stateType: $stateType)';
   }
 
   @override
@@ -167,13 +184,14 @@ class _$_MainTabState implements _MainTabState {
                 other.isLoggedOut == isLoggedOut) &&
             (identical(other.isUpdateSide, isUpdateSide) ||
                 other.isUpdateSide == isUpdateSide) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.stateType, stateType) ||
                 other.stateType == stateType));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, currentTabPosition, isLoggedOut, isUpdateSide, stateType);
+  int get hashCode => Object.hash(runtimeType, currentTabPosition, isLoggedOut,
+      isUpdateSide, userId, stateType);
 
   @JsonKey(ignore: true)
   @override
@@ -187,6 +205,7 @@ abstract class _MainTabState implements MainTabState {
       {required final int currentTabPosition,
       final bool isLoggedOut,
       final bool isUpdateSide,
+      final String userId,
       final StateType stateType}) = _$_MainTabState;
 
   @override
@@ -195,6 +214,8 @@ abstract class _MainTabState implements MainTabState {
   bool get isLoggedOut;
   @override
   bool get isUpdateSide;
+  @override
+  String get userId;
   @override
   StateType get stateType;
   @override

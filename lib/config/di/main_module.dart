@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,16 +10,17 @@ import '../../service/shared_preferences_key_value_store.dart';
 
 @module
 abstract class MainModule {
-
   @Injectable(as: KeyValueStore)
   SharedPreferencesKeyValueStore get sharedPreferencesKeyValueStore;
 
   @preResolve
-  Future<SharedPreferences> getSharedPreferences() async => SharedPreferences.getInstance();
+  Future<SharedPreferences> getSharedPreferences() async =>
+      SharedPreferences.getInstance();
 
   @Singleton(as: AppNavigator)
   AutoRouteNavigator get navigator;
 
   @LazySingleton()
-  AppRouter getAppRouter() => AppRouter(navigatorKey: GlobalKey<NavigatorState>());
+  AppRouter getAppRouter() =>
+      AppRouter(navigatorKey: GlobalKey<NavigatorState>());
 }

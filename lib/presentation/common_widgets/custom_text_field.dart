@@ -22,6 +22,7 @@ class CustomTextField extends StatefulWidget {
   final int maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final TextEditingController? controller;
+  final bool? autoCorrect;
 
   const CustomTextField({
     super.key,
@@ -43,6 +44,7 @@ class CustomTextField extends StatefulWidget {
     this.inputFormatters,
     this.onSubmitted,
     this.controller,
+    this.autoCorrect = false,
   });
 
   @override
@@ -81,6 +83,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: TextFormField(
+              autocorrect: false,
               controller: _controller,
               focusNode: focusNode,
               maxLines: widget.multiLine ? 10 : 1,

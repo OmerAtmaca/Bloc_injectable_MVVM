@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tofas_spor_okullari/config/di/di.dart';
-import 'package:tofas_spor_okullari/data/models/utils/device_info.dart';
-import 'package:tofas_spor_okullari/data/repositories/firebase_repository.dart';
 import 'package:version/version.dart';
 
+import '../../config/di/di.dart';
+import '../../data/models/utils/device_info.dart';
 import '../../data/remote_config/platform_model.dart';
 import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/firebase_repository.dart';
 // ignore: depend_on_referenced_packages
 
 import '../utils/bloc_common.dart';

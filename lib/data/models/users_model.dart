@@ -1,6 +1,7 @@
-
 import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../api_services/firebase_service/firebase_base_model.dart';
 
 class UsersModel extends FirebaseBaseModel<UsersModel> with IdModel {
@@ -30,8 +31,7 @@ class UsersModel extends FirebaseBaseModel<UsersModel> with IdModel {
       this.birthDate,
       this.firstName,
       this.gender,
-      this.lastName
-      });
+      this.lastName});
 
   UsersModel copyWith({
     String? id,
@@ -90,14 +90,20 @@ class UsersModel extends FirebaseBaseModel<UsersModel> with IdModel {
       firstName: map['firstName'] != null ? map['firstName'] as String : null,
       lastName: map['lastName'] != null ? map['lastName'] as String : null,
       gender: map['gender'] != null ? map['gender'] as String : null,
-      phoneNumber: map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
-      birthDate: map['birthDate'] != null ? ((map['birthDate'] as Timestamp).toDate()) : null,
-      createDate: map['createDate'] != null ? ((map['createDate'] as Timestamp).toDate()) : null,
+      phoneNumber:
+          map['phoneNumber'] != null ? map['phoneNumber'] as String : null,
+      birthDate: map['birthDate'] != null
+          ? ((map['birthDate'] as Timestamp).toDate())
+          : null,
+      createDate: map['createDate'] != null
+          ? ((map['createDate'] as Timestamp).toDate())
+          : null,
       tcKimlik: map['tcKimlik'] != null ? map['tcKimlik'] as String : null,
     );
   }
 
-  factory UsersModel.fromJson(String source) => UsersModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UsersModel.fromJson(String source) =>
+      UsersModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   UsersModel fromJson(Map<String, dynamic> json) {
