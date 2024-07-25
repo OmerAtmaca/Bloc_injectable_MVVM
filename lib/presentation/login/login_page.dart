@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tofas_spor_okullari/presentation/utils/bus_helper.dart';
 
 import '../../app/routing/app_navigator.dart';
 import '../../config/di/di.dart';
@@ -28,6 +29,7 @@ class LoginPage extends StatelessWidget {
               navigator.showInfoScaffold(context, () {}, state.error);
             } else if (state.stateType == StateType.success) {
               if (state.isSign) {
+                BusHelper.initialize();
                 navigator.pushNamed(AppNavigator.mainTabPath);
                 context.read<LoginBloc>().resetToken();
               }

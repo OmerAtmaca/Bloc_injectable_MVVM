@@ -37,8 +37,8 @@ class SplashBloc extends Cubit<SplashState> {
       : super(const SplashState());
 
   Future<void> init() async {
-    // _authRepository.resetOnBoarding();
-    // _authRepository.logout();
+    _authRepository.resetOnBoarding();
+    _authRepository.logout();
 
     final response = await _firebaseRepository.getVersionFromDatabase();
     emit(
