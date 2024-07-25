@@ -69,6 +69,7 @@ class MainTabPage extends StatelessWidget {
                   actions: [
                     IconButton(
                         onPressed: () {
+                          BusHelper.close();
                           blocMain.logout();
                           navigator.pushRouteReplace(LoginPath());
                         },
