@@ -83,4 +83,9 @@ class AuthRepositoryImpl implements AuthRepository {
     _localStorageService.logOut();
     return Future.value(true);
   }
+
+  @override
+  Future<bool> setDPname(String dpName) {
+    return _localStorageService.setDPName(dpName);
+  }
 }

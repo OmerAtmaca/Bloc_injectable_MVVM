@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               backgroundColor: Colors.red,
             ));
           }
-          BusHelper.eventBus.on<UpdateHomeEvent>().listen((event) {
+          BusHelper.instance?.eventBus.on<UpdateHomeEvent>().listen((event) {
             context.read<HomeBloc>().getData();
             print("home listen");
           });

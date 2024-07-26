@@ -20,6 +20,7 @@ mixin _$MainTabState {
   bool get isLoggedOut => throw _privateConstructorUsedError;
   bool get isUpdateSide => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  String get dpName => throw _privateConstructorUsedError;
   StateType get stateType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,6 +39,7 @@ abstract class $MainTabStateCopyWith<$Res> {
       bool isLoggedOut,
       bool isUpdateSide,
       String userId,
+      String dpName,
       StateType stateType});
 }
 
@@ -58,6 +60,7 @@ class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
     Object? isLoggedOut = null,
     Object? isUpdateSide = null,
     Object? userId = null,
+    Object? dpName = null,
     Object? stateType = null,
   }) {
     return _then(_value.copyWith(
@@ -76,6 +79,10 @@ class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dpName: null == dpName
+          ? _value.dpName
+          : dpName // ignore: cast_nullable_to_non_nullable
               as String,
       stateType: null == stateType
           ? _value.stateType
@@ -98,6 +105,7 @@ abstract class _$$_MainTabStateCopyWith<$Res>
       bool isLoggedOut,
       bool isUpdateSide,
       String userId,
+      String dpName,
       StateType stateType});
 }
 
@@ -116,6 +124,7 @@ class __$$_MainTabStateCopyWithImpl<$Res>
     Object? isLoggedOut = null,
     Object? isUpdateSide = null,
     Object? userId = null,
+    Object? dpName = null,
     Object? stateType = null,
   }) {
     return _then(_$_MainTabState(
@@ -135,6 +144,10 @@ class __$$_MainTabStateCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      dpName: null == dpName
+          ? _value.dpName
+          : dpName // ignore: cast_nullable_to_non_nullable
+              as String,
       stateType: null == stateType
           ? _value.stateType
           : stateType // ignore: cast_nullable_to_non_nullable
@@ -151,6 +164,7 @@ class _$_MainTabState implements _MainTabState {
       this.isLoggedOut = false,
       this.isUpdateSide = false,
       this.userId = "",
+      this.dpName = "",
       this.stateType = StateType.initial});
 
   @override
@@ -166,11 +180,14 @@ class _$_MainTabState implements _MainTabState {
   final String userId;
   @override
   @JsonKey()
+  final String dpName;
+  @override
+  @JsonKey()
   final StateType stateType;
 
   @override
   String toString() {
-    return 'MainTabState(currentTabPosition: $currentTabPosition, isLoggedOut: $isLoggedOut, isUpdateSide: $isUpdateSide, userId: $userId, stateType: $stateType)';
+    return 'MainTabState(currentTabPosition: $currentTabPosition, isLoggedOut: $isLoggedOut, isUpdateSide: $isUpdateSide, userId: $userId, dpName: $dpName, stateType: $stateType)';
   }
 
   @override
@@ -185,13 +202,14 @@ class _$_MainTabState implements _MainTabState {
             (identical(other.isUpdateSide, isUpdateSide) ||
                 other.isUpdateSide == isUpdateSide) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.dpName, dpName) || other.dpName == dpName) &&
             (identical(other.stateType, stateType) ||
                 other.stateType == stateType));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, currentTabPosition, isLoggedOut,
-      isUpdateSide, userId, stateType);
+      isUpdateSide, userId, dpName, stateType);
 
   @JsonKey(ignore: true)
   @override
@@ -206,6 +224,7 @@ abstract class _MainTabState implements MainTabState {
       final bool isLoggedOut,
       final bool isUpdateSide,
       final String userId,
+      final String dpName,
       final StateType stateType}) = _$_MainTabState;
 
   @override
@@ -216,6 +235,8 @@ abstract class _MainTabState implements MainTabState {
   bool get isUpdateSide;
   @override
   String get userId;
+  @override
+  String get dpName;
   @override
   StateType get stateType;
   @override

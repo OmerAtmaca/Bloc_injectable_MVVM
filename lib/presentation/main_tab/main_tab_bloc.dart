@@ -17,6 +17,7 @@ class MainTabState with _$MainTabState {
     @Default(false) bool isLoggedOut,
     @Default(false) bool isUpdateSide,
     @Default("") String userId,
+    @Default("") String dpName,
     @Default(StateType.initial) StateType stateType,
   }) = _MainTabState;
 }
@@ -31,6 +32,9 @@ class MainTabBloc extends Cubit<MainTabState> {
 
   void updateTabPosition(int pos) =>
       emit(state.copyWith(currentTabPosition: pos));
+
+  void getDPName() =>
+      emit(state.copyWith(dpName: _localStorageService.getDPName()));
 
   void updateSide(bool data) => emit(state.copyWith(isUpdateSide: data));
 
@@ -50,6 +54,4 @@ class MainTabBloc extends Cubit<MainTabState> {
       debugPrint(e.toString());
     }
   }
-
-  void getData() {}
 }
