@@ -3,7 +3,7 @@ import 'dart:ui';
 abstract class CustomColors {
   static const primaryTextColor = Color(0xff18192B);
   static const mirage = Color(0xff18192B);
-  static const geyser = Color(0xffDAE2E6);
+  static const geyser = Color(0xffffffff);
   static const manatee = Color(0xff8F9098);
   static const charade = Color(0xff272b34);
   static const apple = Color(0xff55cc44);

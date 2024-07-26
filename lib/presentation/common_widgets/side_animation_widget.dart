@@ -48,9 +48,9 @@ class _SideBarWidgetState extends State<SideBarWidget>
     ).animate(_xControllerForDrawer);
     _xControllerForChild.addListener(() {
       if (_xControllerForChild.value > 0 && _xControllerForChild.value < 1) {
-        BusHelper.eventBus.fire(UpdateSideEvent(true));
+        BusHelper.instance?.eventBus.fire(UpdateSideEvent(true));
       } else {
-        BusHelper.eventBus.fire(UpdateSideEvent(false));
+        BusHelper.instance?.eventBus.fire(UpdateSideEvent(false));
       }
     });
   }

@@ -20,6 +20,8 @@ abstract class AuthRepository {
 
   Future<bool> setRefreshToken(String refreshToken);
 
+  Future<bool> setDPname(String dpName);
+
   bool isLoggedIn();
 
   bool isOnBoarded();

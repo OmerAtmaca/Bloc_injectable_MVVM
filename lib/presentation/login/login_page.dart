@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
               navigator.showInfoScaffold(context, () {}, state.error);
             } else if (state.stateType == StateType.success) {
               if (state.isSign) {
-                BusHelper.initialize();
+                BusHelper.instance?.initialize();
                 navigator.pushNamed(AppNavigator.mainTabPath);
                 context.read<LoginBloc>().resetToken();
               }

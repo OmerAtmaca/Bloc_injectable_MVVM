@@ -36,7 +36,7 @@ class MainTabPage extends StatelessWidget {
       builder: (context, child, _) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => blocMain,
+                create: (context) => blocMain..getDPName(),
               ),
               BlocProvider(
                 create: (context) => blocHome,
@@ -46,7 +46,9 @@ class MainTabPage extends StatelessWidget {
                 listener: (context, state) {
               if (state.stateType == StateType.success) {}
             }, builder: (context, state) {
-              BusHelper.eventBus.on<UpdateSideEvent>().listen((event) {
+              BusHelper.instance?.eventBus
+                  .on<UpdateSideEvent>()
+                  .listen((event) {
                 context.read<MainTabBloc>().updateSide(event.side);
               });
               return Scaffold(
@@ -66,10 +68,11 @@ class MainTabPage extends StatelessWidget {
                     )),
                 appBar: AppBar(
                   automaticallyImplyLeading: false,
+                  title: Text(state.dpName),
                   actions: [
                     IconButton(
                         onPressed: () {
-                          BusHelper.close();
+                          BusHelper.instance?.close();
                           blocMain.logout();
                           navigator.pushRouteReplace(LoginPath());
                         },
@@ -90,6 +93,7 @@ class MainTabPage extends StatelessWidget {
                             bottomRight: Radius.circular(100),
                             topLeft: Radius.circular(100))),
                     onPressed: () {
+                      print(state.dpName);
                       showCupertinoModalBottomSheet(
                               topRadius: const Radius.circular(15),
                               enableDrag: true,
@@ -101,7 +105,8 @@ class MainTabPage extends StatelessWidget {
                         if (value != null) {
                           if (context.mounted) {
                             context.read<MainTabBloc>().addData(model: value);
-                            BusHelper.eventBus.fire(UpdateHomeEvent(true));
+                            BusHelper.instance?.eventBus
+                                .fire(UpdateHomeEvent(true));
                           }
                         }
                       });

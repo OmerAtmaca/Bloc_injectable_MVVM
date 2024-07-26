@@ -1,13 +1,25 @@
 import 'package:event_bus/event_bus.dart';
 
 class BusHelper {
-  static late EventBus eventBus;
+  EventBus eventBus = EventBus();
 
-  static void initialize() {
+  static BusHelper? _instance;
+
+  // factory BusHelper() => _instance ??= BusHelper._init();
+
+  static BusHelper? get instance {
+    _instance ??= BusHelper._init();
+
+    return _instance;
+  }
+
+  BusHelper._init();
+
+  void initialize() {
     eventBus = EventBus();
   }
 
-  static void close() {
+  void close() {
     eventBus.streamController.close();
   }
 }

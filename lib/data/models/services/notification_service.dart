@@ -72,7 +72,7 @@ class NotificationService {
       debugPrint("FirebaseMessaging.onMessage");
       final notification = message.notification;
       final android = message.notification?.android;
-      BusHelper.eventBus.fire(UpdateHomeEvent(false));
+      BusHelper.instance?.eventBus.fire(UpdateHomeEvent(false));
       if (notification != null && android != null) {
         _flutterLocalNotificationsPlugin.show(
           notification.hashCode,

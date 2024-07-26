@@ -49,6 +49,12 @@ class UserModelLocalStorageService {
   Future<bool> setIsOnBoarded(bool value) =>
       _keyValueStore.setBool(SharedPreferencesKeys.isOnBoarded, value);
 
+  Future<bool> setDPName(String value) =>
+      _keyValueStore.setString(SharedPreferencesKeys.dpName, value);
+
+  String getDPName() =>
+      _keyValueStore.getString(SharedPreferencesKeys.dpName) ?? "";
+
   void logOut() {
     _keyValueStore.clear();
     setIsOnBoarded(false);

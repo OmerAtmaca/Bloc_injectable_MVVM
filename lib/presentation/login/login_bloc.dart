@@ -47,6 +47,7 @@ class LoginBloc extends Cubit<LoginState> {
       _authRepository.setId(response?.uid.toString() ?? "");
       if (response != null) {
         isSignIn(true);
+        _authRepository.setDPname(response.email ?? "");
         emit(state.copyWith(stateType: StateType.success));
       }
     } on Exception catch (e) {
